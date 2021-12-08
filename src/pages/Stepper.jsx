@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../components/button';
 import { useParams, useHistory } from 'react-router';
-import { Link } from "react-router-dom";
 import Stepper from '../components/stepper'
 import {Container,BackButton, Information, NextButton, StepperContainer} from "./styled"
 
@@ -10,13 +9,13 @@ const Component = () => {
     const [currentStep, setCurrentStep] = useState(1)
     const informationSteps = [{id:1, data:"Step 1"}, {id:2, data:"Step 2"}, {id:3, data:"Step 3"},{id:4, data:"Step 4"}]
     
-    const renderText = informationSteps.filter(step=>step.id == currentStep).map(step=>step.data);
+    const renderText = informationSteps.filter(step=>step.id === currentStep).map(step=>step.data);
 const routerHistory = useHistory()
     const nextStep = ()=>{
-      routerHistory.push(`/${currentStep+1}`)
+      routerHistory.push(`/step/${currentStep+1}`)
     }
     const backStep = ()=>{
-      routerHistory.push(`/${currentStep-1}`)
+      routerHistory.push(`/step/${currentStep-1}`)
     }
     useEffect(() => {
       
